@@ -2,8 +2,8 @@ import React, { Fragment } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-import Modal from './Modal'
-import Toggle from './ToggleRenderPropsChildren'
+import {Modal} from 'Elements'
+import {Toggle} from 'Utilities'
 
 function App() {
 	return (
