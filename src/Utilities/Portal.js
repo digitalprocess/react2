@@ -7,6 +7,7 @@ export default class Portal extends Component {
 	constructor() {
 		super()
 		this.el = document.createElement('div')
+		this.el.setAttribute('class', 'portal-container')
 	}
 
 	componentDidMount() {

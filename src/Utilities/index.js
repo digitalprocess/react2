@@ -1,4 +1,16 @@
 import Portal from './Portal'
 import Toggle from './Toggle'
+import elevation from './elevation'
+import transition from './transition'
+import colors from './colors'
 
-export { Portal, Toggle }
+export * from './colors'
+export * from './position'
+
+export {
+	Portal,
+	Toggle,
+	colors,
+	elevation,
+	transition
+}
