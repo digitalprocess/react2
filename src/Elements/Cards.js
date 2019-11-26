@@ -7,7 +7,9 @@ export const Card = styled.div`
 	padding: 15px;
 	color: ${colors.black};
 	${elevation[4]};
-	${transition({})};
+	${transition({
+		property: 'box-shadow'
+	})};
 	&:hover {
 		${elevation[5]}
 		color: ${purple};

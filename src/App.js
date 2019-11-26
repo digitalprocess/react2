@@ -1,38 +1,12 @@
-import React, { Fragment, Component } from 'react'
+import React, { Fragment } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-import {Modal} from 'Elements'
-import {Toggle} from 'Utilities'
 import User from './User'
-import {UserContext} from './UserContext'
-class UserProvider extends Component {
-	state = {
-		id: '123',
-		name: 'Jon Snow',
-		email: 'jon@wall.com',
-	}
+import UserProvider from './UserProvider'
 
-	logout = () => {
-		this.setState({
-			id: null,
-			name: '',
-			email: '',
-		})
-	}
-
-	render() {
-		return (
-			<UserContext.Provider
-				value={{
-					user: this.state,
-					logout: this.logout,
-				}}>
-				{this.props.children}
-			</UserContext.Provider>
-		)
-	}
-}
+import { Modal } from 'Elements'
+import { Toggle } from 'Utilities'
 
 function App() {
 	return (

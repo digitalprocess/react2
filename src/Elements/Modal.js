@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Transition } from 'react-spring/renderprops'
 import styled from 'styled-components';
 
 import Icon from './Icon';
@@ -10,17 +11,34 @@ export default class Modal extends Component {
 		const { children, toggle, on } = this.props;
 		return (
 			<Portal>
-				{on && (
-					<ModalWrapper>
-						<ModalCard>
-							<CloseButton onClick={toggle}>
-								<Icon name="close" />
-							</CloseButton>
-							<div>{children}</div>
-						</ModalCard>
-						<Background onClick={toggle} />
-					</ModalWrapper>
-				)}
+				<Transition
+					items={on}
+					unique={true}
+					from={{ opacity: 0, bgOpacity: 0, y: -50 }}
+					enter={{ opacity: 1, bgOpacity: 0.5, y: 0 }}
+					leave={{ opacity: 0, bgOpacity: 0, y: 50 }}
+				>
+					{on => on &&
+						(styles => (
+							<ModalWrapper style={{...styles}}>
+							<ModalCard
+								style={{
+									transform: `translate3d(0, ${styles.y}px, 0)`,
+									...styles
+								}}
+							>
+									<CloseButton onClick={toggle}>
+										<Icon name="close" />
+									</CloseButton>
+									<div>{children}</div>
+								</ModalCard>
+								<Background
+									onClick={toggle}
+									style={{opacity: styles.bgOpacity}}
+								/>
+							</ModalWrapper>
+					))}
+				</Transition>
 			</Portal>
 		)
 	}
